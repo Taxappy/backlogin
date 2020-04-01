@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const sequelize = require("sequelize")
 
 const app = express();
 
@@ -31,7 +32,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 
-db.sequelize.sync();
+//db.sequelize.sync();
+
+db.sequelize.sync({ force: true }).then(() => {
+    console.log('Drop and Resync Db');
+    initial();
+});
 
 // simple route
 app.get("/", (req, res) => {
@@ -56,11 +62,6 @@ function initial() {
 
     Role.create({
         id: 2,
-        name: "tercero"
-    });
-
-    Role.create({
-        id: 3,
         name: "admin"
     });
 }

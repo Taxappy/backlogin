@@ -57,12 +57,6 @@ exports.signin = (req, res) => {
                 user.password
             );
 
-            if (user.enable == 0) {
-                return res.status(401).send({
-                    accessToken: null,
-                    message: "User disable"
-                });
-            }
 
             if (!passwordIsValid) {
                 return res.status(401).send({

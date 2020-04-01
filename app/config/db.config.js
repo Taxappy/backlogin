@@ -1,8 +1,8 @@
 module.exports = {
-    HOST: "confeccionesapp.czwwvekl5msz.us-east-1.rds.amazonaws.com",
+    HOST: "taxappy.czwwvekl5msz.us-east-1.rds.amazonaws.com",
     USER: "admin",
-    PASSWORD: "rootconfeccionesapp",
-    DB: "confeccionesappingweb",
+    PASSWORD: "taxappyroot",
+    DB: "taxappyintegrador",
     dialect: "mysql",
     pool: {
         max: 5,

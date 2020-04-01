@@ -9,7 +9,3 @@ exports.userBoard = (req, res) => {
 exports.adminBoard = (req, res) => {
     res.status(200).send("Admin Content.");
 };
-
-exports.terceroBoard = (req, res) => {
-    res.status(200).send("Tercero Content.");
-};

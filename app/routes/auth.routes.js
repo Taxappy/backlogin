@@ -18,11 +18,6 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/confeccionesapp/mod", [authJwt.verifyToken, authJwt.isTercero],
-        controller.terceroBoard
-    );
-
-    app.get(
         "/api/confeccionesapp/admin", [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
     );
