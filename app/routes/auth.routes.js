@@ -10,15 +10,15 @@ module.exports = function(app) {
         next();
     });
 
-    app.get("/api/confeccionesapp/all", controller.allAccess);
+    app.get("/api/taxappy/all", controller.allAccess);
 
     app.get(
-        "/api/confeccionesapp/user", [authJwt.verifyToken],
+        "/api/taxappy/user", [authJwt.verifyToken],
         controller.userBoard
     );
 
     app.get(
-        "/api/confeccionesapp/admin", [authJwt.verifyToken, authJwt.isAdmin],
+        "/api/taxappy/admin", [authJwt.verifyToken, authJwt.isAdmin],
         controller.adminBoard
     );
 };
