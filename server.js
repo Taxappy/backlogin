@@ -54,13 +54,12 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
-initial();
+//initial();
 
 function initial() {
+
     Role.create({
         id: 3,
         name: "taxista"
     });
-
-
 }

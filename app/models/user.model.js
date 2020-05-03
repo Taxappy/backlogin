@@ -10,7 +10,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         movile: {
-            type: Sequelize.BIGINT
+            type: Sequelize.REAL
         }
     });
 
