@@ -1,7 +1,7 @@
 module.exports = {
-    HOST: "taxappy.czwwvekl5msz.us-east-1.rds.amazonaws.com",
-    USER: "admin",
-    PASSWORD: "taxappyroot",
+    HOST: "35.224.213.221",
+    USER: "root",
+    PASSWORD: "root",
     DB: "taxappyintegrador",
     dialect: "mysql",
     pool: {

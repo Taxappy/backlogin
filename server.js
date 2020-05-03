@@ -10,7 +10,7 @@ const config = {
     application: {
         cors: {
             server: [{
-                origin: "https://confeccionesapp-back.herokuapp.com", //servidor que deseas que consuma o (*) en caso que sea acceso libre
+                origin: "https://localhost:3306", //servidor que deseas que consuma o (*) en caso que sea acceso libre
                 credentials: true
             }]
         }
@@ -54,14 +54,13 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
+initial();
+
 function initial() {
     Role.create({
-        id: 1,
-        name: "user"
+        id: 3,
+        name: "taxista"
     });
 
-    Role.create({
-        id: 2,
-        name: "admin"
-    });
+
 }
