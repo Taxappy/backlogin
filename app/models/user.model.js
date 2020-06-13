@@ -11,6 +11,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         movile: {
             type: Sequelize.REAL
+        },
+        identificacion:{
+            type: Sequelize.REAL
         }
     });
 

@@ -34,10 +34,13 @@ const Role = db.role;
 
 db.sequelize.sync();
 
-// db.sequelize.sync({ force: true }).then(() => {
-//     console.log('Drop and Resync Db');
-//     initial();
-// });
+
+// initial();
+
+//  db.sequelize.sync({ force: true }).then(() => {
+//      console.log('Drop and Resync Db');
+//      initial();
+//  });
 
 // simple route
 app.get("/", (req, res) => {
@@ -48,6 +51,9 @@ app.get("/", (req, res) => {
 require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 
+
+
+
 // set port, listen for requests
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
@@ -57,6 +63,16 @@ app.listen(PORT, () => {
 //initial();
 
 function initial() {
+
+    Role.create({
+        id: 1,
+        name: "user"
+    });
+
+    Role.create({
+        id: 2,
+        name: "admin"
+    });
 
     Role.create({
         id: 3,
