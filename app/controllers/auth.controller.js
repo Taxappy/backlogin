@@ -11,6 +11,7 @@ var bcrypt = require("bcryptjs");
 exports.signup = (req, res) => {
     // Save User to Database
     User.create({
+            name: req.body.name,
             username: req.body.username,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 8),
@@ -77,6 +78,7 @@ exports.signin = (req, res) => {
                 }
                 res.status(200).send({
                     id: user.id,
+                    name: user.name,
                     username: user.username,
                     email: user.email,
                     movile: user.movile,
@@ -109,4 +111,76 @@ exports.editUser = (req, res) => {
             res.status(500).send({ message: err.message });
         });
 
-}
+};
+
+exports.delete = (req, res) => {
+    const id = req.params.id;
+
+    User.destroy({
+            where: { id: id }
+        })
+        .then(num => {
+            if (num == 1) {
+                res.send({
+                    message: "User was deleted successfully!"
+                });
+            } else {
+                res.send({
+                    message: `Cannot delete User with id=${id}. Maybe Tutorial was not found!`
+                });
+            }
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Could not delete User with id=" + id
+            });
+        });
+};
+
+exports.findAll = (req, res) => {
+    const username = req.query.username;
+    var condition = username ? {
+        username: {
+            [Op.like]: `%${username}%`
+        }
+    } : null;
+
+    User.findAll({ where: condition })
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving USER."
+            });
+        });
+};
+
+exports.findOne = (req, res) => {
+    const id = req.params.id;
+
+    User.findByPk(id)
+        .then(data => {
+            res.send(data);
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: "Ocurrio un error al Buscar el usuario"
+            });
+        });
+};
+
+exports.findAllIdentificacion = (req, res) => {   
+
+    User.findOne({ where: {identificacion: req.params.identificacion} })
+      .then(data => {
+        res.send(data);
+      })
+      .catch(err => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving Usuario."
+        });
+      });
+  };
+

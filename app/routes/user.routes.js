@@ -17,9 +17,16 @@ module.exports = function(app) {
         ],
         controller.signup
     );
+    app.get("/api/users/:id", controller.findOne);
+
+    app.get("/api/users", controller.findAll);
+
+    app.get("/api/users/identificacion/:identificacion", controller.findAllIdentificacion);
 
     app.post("/api/auth/signin", controller.signin);
 
     app.put("/api/user/edituser", controller.editUser);
+
+    app.delete("/api/auth/users/:id", controller.delete);
 
 }
